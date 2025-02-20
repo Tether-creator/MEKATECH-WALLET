@@ -7,9 +7,19 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>MEKATECH WALLET</h1>
-    <p>Your Balance: <span id="balance">Loading...</span> USDT</p>
-    <p>Token Price: <span id="price">Fetching...</span></p>
-    <script src="script.js"></script>
+    <div class="container">
+        <h1>MEKATECH WALLET</h1>
+        <p id="balance">Your Balance: Loading...</p>
+        <p id="tokenPrice">Token Price: Fetching...</p>
+
+        <!-- Wallet Connection -->
+        <button id="connectWallet">Connect Wallet</button>
+        <p id="walletAddress">Not connected</p>
+
+        <!-- Send Transaction -->
+        <button id="sendTransaction">Send Transaction</button>
+    </div>
+
+    <script src="script.js" type="module"></script>
 </body>
 </html>
