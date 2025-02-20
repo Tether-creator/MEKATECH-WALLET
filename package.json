@@ -1,11 +1,16 @@
 {
   "name": "mekatech-wallet",
   "version": "1.0.0",
-  "main": "server.cjs",
+  "description": "MEKA-TECH Crypto Wallet",
+  "main": "server.js",
   "scripts": {
-    "start": "node server.cjs"
+    "start": "node server.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
