@@ -8,18 +8,6 @@
 </head>
 <body>
     <h1>MEKA-TECH Wallet</h1>
-    <p id="status">Checking backend status...</p>
-
-    <script>
-        fetch("/api/status")
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("status").textContent = data.status;
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                document.getElementById("status").textContent = "Backend not reachable.";
-            });
-    </script>
+    <p>Balance: <span id="balance">Loading...</span></p>
 </body>
 </html>
