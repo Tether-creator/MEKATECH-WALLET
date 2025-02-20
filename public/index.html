@@ -4,62 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEKA-TECH Wallet</title>
-
-    <!-- Security Fix: Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self'; 
-        script-src 'self' 'unsafe-inline' 'unsafe-eval'; 
-        style-src 'self' 'unsafe-inline'; 
-        connect-src 'self' https://your-backend-url.com;">
-
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        .container {
-            max-width: 400px;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        button {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px;
-            border: none;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
 </head>
 <body>
-
-    <div class="container">
-        <h1>MEKA-TECH Wallet</h1>
-        <p>Status: <span id="status">Checking...</span></p>
-        <button onclick="checkBackend()">Check Backend</button>
-    </div>
+    <h1>MEKA-TECH Wallet</h1>
+    <p id="status">Checking backend...</p>
 
     <script>
-        function checkBackend() {
-            fetch("https://your-backend-url.com")
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById("status").innerText = data.message;
-                })
-                .catch(error => {
-                    document.getElementById("status").innerText = "Error connecting to backend!";
-                    console.error("Backend Error:", error);
-                });
-        }
+        fetch("/api/status")
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("status").innerText = data.status;
+            })
+            .catch(error => {
+                document.getElementById("status").innerText = "Backend not reachable!";
+                console.error("Error fetching status:", error);
+            });
     </script>
-
 </body>
 </html>
