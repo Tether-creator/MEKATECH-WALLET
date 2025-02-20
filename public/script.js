@@ -1,15 +1,12 @@
-document.addEventListener("DOMContentLoaded", async function () {
+document.addEventListener("DOMContentLoaded", async () => {
     try {
-        let balanceResponse = await fetch('/balance'); // Fetch balance API
-        if (!balanceResponse.ok) throw new Error("Balance API not found");
+        let balanceResponse = await fetch('/balance');
         let balanceData = await balanceResponse.json();
+        document.getElementById("balance").textContent = balanceData.balance.toFixed(2);
 
-        let priceResponse = await fetch('/price'); // Fetch price API
-        if (!priceResponse.ok) throw new Error("Price API not found");
+        let priceResponse = await fetch('/price');
         let priceData = await priceResponse.json();
-
-        document.getElementById("balance").innerText = Your Balance: ${balanceData.balance} USDT;
-        document.getElementById("tokenPrice").innerText = Token Price: $${priceData.price};
+        document.getElementById("price").textContent = $${priceData.price.toFixed(2)};
     } catch (error) {
         console.error("Error fetching data:", error);
     }
