@@ -1,17 +1,11 @@
 {
   "name": "mekatech-wallet",
   "version": "1.0.0",
-  "description": "MEKATECH Web3 Wallet",
-  "main": "server.js",
+  "main": "server.cjs",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.cjs"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "cors": "^2.8.5",
-    "dotenv": "^16.3.1",
-    "ethers": "^6.10.0",
-    "web3modal": "^1.9.8"
-  },
-  "type": "module"
+    "express": "^4.18.2"
+  }
 }
