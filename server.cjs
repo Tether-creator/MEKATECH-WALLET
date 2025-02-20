@@ -1,26 +1,24 @@
 const express = require("express");
 const cors = require("cors");
-const path = require("path");
 
 const app = express();
-const PORT = process.env.PORT || 10000;  // Use Render’s environment port
+const PORT = process.env.PORT || 10000;
 
-// Middleware
+// Enable CORS
 app.use(cors());
-app.use(express.json());
-app.use(express.static("public")); // Serve frontend files
 
-// API Route
-app.get("/api/status", (req, res) => {
-    res.json({ status: "Wallet Backend Running" });
+// Set Content Security Policy (CSP) headers to prevent blocking scripts
+app.use((req, res, next) => {
+    res.setHeader("Content-Security-Policy", "script-src 'self' 'unsafe-inline'");
+    next();
 });
 
-// Serve frontend
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "index.html"));
+// Sample balance API
+app.get("/balance", (req, res) => {
+    res.json({ balance: "100 USDT" });
 });
 
-// Start Server
+// Start server
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`✅ Wallet Backend Running on port ${PORT}`);
 });
