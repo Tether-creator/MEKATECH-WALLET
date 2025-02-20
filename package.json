@@ -1,12 +1,16 @@
 {
   "name": "mekatech-wallet",
   "version": "1.0.0",
-  "description": "MEKATECH Wallet App",
+  "description": "Mekatech Wallet - Cryptocurrency Balance Viewer",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "helmet": "^6.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
