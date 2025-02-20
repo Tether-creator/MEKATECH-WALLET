@@ -4,7 +4,7 @@ const helmet = require('helmet');
 
 const app = express();
 
-// Set Content Security Policy (CSP)
+// Set Content Security Policy (CSP) headers
 app.use(
     helmet({
         contentSecurityPolicy: {
@@ -13,9 +13,9 @@ app.use(
                 scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
                 styleSrc: ["'self'", "'unsafe-inline'"],
                 imgSrc: ["'self'", "data:"],
-                connectSrc: ["'self'"],
-            },
-        },
+                connectSrc: ["'self'"]
+            }
+        }
     })
 );
 
@@ -40,5 +40,5 @@ app.get('/price', (req, res) => {
 // Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(Server running on port ${PORT});
 });
