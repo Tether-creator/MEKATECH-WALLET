@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEKA-TECH Wallet</title>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <script defer src="script.js"></script>
 </head>
 <body>
     <h1>MEKA-TECH Wallet</h1>
-    <p id="status">Checking backend...</p>
+    <p id="status">Checking backend status...</p>
 
     <script>
         fetch("/api/status")
             .then(response => response.json())
             .then(data => {
-                document.getElementById("status").innerText = data.status;
+                document.getElementById("status").textContent = data.status;
             })
             .catch(error => {
-                document.getElementById("status").innerText = "Backend not reachable!";
-                console.error("Error fetching status:", error);
+                console.error("Error:", error);
+                document.getElementById("status").textContent = "Backend not reachable.";
             });
     </script>
 </body>
