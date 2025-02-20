@@ -1,16 +1,25 @@
 {
   "name": "mekatech-wallet",
   "version": "1.0.0",
-  "description": "MEKA-TECH Crypto Wallet",
+  "description": "MEKA-TECH Wallet to send transactions and display token balances",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "type": "commonjs",
+  "keywords": [
+    "wallet",
+    "blockchain",
+    "crypto",
+    "mekatech"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
 }
