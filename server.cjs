@@ -7,13 +7,9 @@ const PORT = process.env.PORT || 10000;
 app.use(cors());
 app.use(express.json());
 
-// Ensure this route exists
 app.get("/balance", (req, res) => {
-    res.json({ "Balance": "100 USDT" });
+    res.json({ balance: "100" }); // Ensure the key matches what the frontend expects
 });
-
-// Serve frontend files
-app.use(express.static("public"));
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
