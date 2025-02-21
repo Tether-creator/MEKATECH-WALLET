@@ -1,25 +1,43 @@
-async function fetchBalance() {
-    try {
-        let response = await fetch("https://mekatech-wallet.onrender.com/balance", {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEKATECH Wallet</title>
+</head>
+<body>
 
-        if (!response.ok) {
-            throw new Error(HTTP error! Status: ${response.status});
+    <h1>MEKATECH-Wallet</h1>
+    <p class="balance">Fetching balance...</p>
+    <p class="error" style="display: none; color: red;"></p>
+
+    <script>
+        async function fetchBalance() {
+            try {
+                let response = await fetch("https://mekatech-wallet.onrender.com/balance", {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error(HTTP error! Status: ${response.status});
+                }
+
+                let data = await response.json();
+                document.querySelector(".balance").textContent = Balance: ${data.Balance};
+            } catch (error) {
+                document.querySelector(".balance").style.display = "none";
+                let errorElement = document.querySelector(".error");
+                errorElement.style.display = "block";
+                errorElement.textContent = "Error fetching balance. Please try again later.";
+                console.error("Fetch Error:", error);
+            }
         }
 
-        let data = await response.json();
-        document.querySelector(".balance").textContent = Balance: ${data.Balance};
-    } catch (error) {
-        document.querySelector(".balance").style.display = "none";
-        let errorElement = document.querySelector(".error");
-        errorElement.style.display = "block";
-        errorElement.textContent = "Error fetching balance. Please try again later.";
-        console.error("Fetch Error:", error);
-    }
-}
+        fetchBalance();
+    </script>
 
-fetchBalance();
+</body>
+</html>
