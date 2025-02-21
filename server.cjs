@@ -4,21 +4,17 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 10000;
 
-// Enable CORS
 app.use(cors());
+app.use(express.json());
 
-// Set Content Security Policy (CSP) headers to prevent blocking scripts
-app.use((req, res, next) => {
-    res.setHeader("Content-Security-Policy", "script-src 'self' 'unsafe-inline'");
-    next();
-});
-
-// Sample balance API
+// Ensure this route exists
 app.get("/balance", (req, res) => {
-    res.json({ balance: "100 USDT" });
+    res.json({ "Balance": "100 USDT" });
 });
 
-// Start server
+// Serve frontend files
+app.use(express.static("public"));
+
 app.listen(PORT, () => {
-    console.log(`✅ Wallet Backend Running on port ${PORT}`);
+    console.log(Server is running on port ${PORT});
 });
