@@ -4,21 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEKATECH Wallet</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .balance {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .error {
+            color: red;
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-
-    <h1>MEKATECH-Wallet</h1>
+    <h1>MEKATECH Wallet</h1>
     <p class="balance">Fetching balance...</p>
-    <p class="error" style="display: none; color: red;"></p>
+    <p class="error"></p>
 
     <script>
         async function fetchBalance() {
             try {
                 let response = await fetch("https://mekatech-wallet.onrender.com/balance", {
                     method: "GET",
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
+                    headers: { "Content-Type": "application/json" }
                 });
 
                 if (!response.ok) {
@@ -26,7 +40,7 @@
                 }
 
                 let data = await response.json();
-                document.querySelector(".balance").textContent = Balance: ${data.Balance};
+                document.querySelector(".balance").textContent = Balance: ${data.balance} USDT;
             } catch (error) {
                 document.querySelector(".balance").style.display = "none";
                 let errorElement = document.querySelector(".error");
@@ -38,6 +52,5 @@
 
         fetchBalance();
     </script>
-
 </body>
 </html>
